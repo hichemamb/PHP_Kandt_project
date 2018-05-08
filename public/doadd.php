@@ -24,7 +24,7 @@ if(isset($_POST['submit']))
         $reqSql = 'INSERT INTO 
           `page` (`id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title`) 
         VALUES
-          (NULL, :slug, :title, :h1, :p, :spanClass, :spanText, :imgAlt, :imgSrc, :navTitle)';
+          (NULL, :slug, :title, :h1, :p, :spanClass, :spanText, :imgAlt, :imgSrc, :navTitle);';
         $req = $pdo->prepare($reqSql);
         $req->execute(array(
             'slug' => $slug,
@@ -39,6 +39,5 @@ if(isset($_POST['submit']))
 
         header("Location: gestion.php");
 
-    }
-
+    } else echo '<script type="text/javascript">window.alert("Veuillez saisir tout les champs");</script>';
 }
