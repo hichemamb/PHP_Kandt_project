@@ -20,10 +20,12 @@ if(isset($_POST['submit']))
 
     if(!empty($slug) && !empty($title) && !empty($h1) && !empty($p) && !empty($spanClass) && !empty($spanText) && !empty($imgAlt) && !empty($imgSrc) && !empty($navTitle)){
 
-
         require_once "../includes/connection.php";
-
-        $req = $pdo->prepare("INSERT INTO `page` (`id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title`) VALUES(NULL, :slug, :title, :h1, :p, :spanClass, :spanText, :imgAlt, :imgSrc, :navTitle)");
+        $reqSql = 'INSERT INTO 
+          `page` (`id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title`) 
+        VALUES
+          (NULL, :slug, :title, :h1, :p, :spanClass, :spanText, :imgAlt, :imgSrc, :navTitle)';
+        $req = $pdo->prepare($reqSql);
         $req->execute(array(
             'slug' => $slug,
             'title' => $title,

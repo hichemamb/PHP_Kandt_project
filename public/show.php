@@ -21,11 +21,19 @@ require_once "../includes/connection.php";
 
 <body>
 <?php
-$show = $pdo->prepare('SELECT `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title` FROM `page` WHERE `id`=:id');
-$show->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
-$show->execute();
+$reqSql = 'SELECT 
+  `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title` 
+FROM 
+  `page` 
+WHERE 
+  `id`=:id
+LIMIT 1'
+;
+$req = $pdo->prepare($reqSql);
+$req->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
+$req->execute();
 
-$pages=$show; ?>
+$pages=$req; ?>
 
 <h1>Liste des pages</h1>
 
@@ -43,7 +51,6 @@ $pages=$show; ?>
         <th>nav-title</th>
         <th>Actions</th>
     </tr>
-
     <?php foreach ($pages as $thepage): ?>
         <tr>
             <td><?=$thepage['id']?></td>
@@ -58,16 +65,9 @@ $pages=$show; ?>
             <td><?= $thepage['nav-title']?></td>
             <td><a href="remove.php?id=<?= $thepage['id']?>">Supprimer</a></td>
             <td><a href="edit.php?id=<?= $thepage['id']?>">Modifier</a></td>
-
-
         </tr>
-
     <?php endforeach; ?>
 </table>
-
-
-
-
 </body>
 
 </html>
