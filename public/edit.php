@@ -6,16 +6,21 @@
  * Time: 01:01
  */
 
-
-
 require_once "doedit.php";
 require_once "../includes/connection.php";
 
-$show = $pdo->prepare('SELECT `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title` FROM `page` WHERE `id`=:id');
-$show->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
-$show->execute();
+$reqSql = 'SELECT 
+  `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title`
+FROM 
+  `page` 
+WHERE 
+  `id`=:id 
+LIMIT 1';
+$req = $pdo->prepare($reqSql);
+$req->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
+$req->execute();
 
-$row = $show ->fetch(PDO::FETCH_ASSOC);
+$row = $req ->fetch(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -23,9 +28,6 @@ $row = $show ->fetch(PDO::FETCH_ASSOC);
 <h1>Modification de la page </h1>
 
 <form method="POST">
-
-    <input type="hidden" name="id" value="<?= $row['id']?>"></br></br>
-
     <label>slug:</label>
     <input type="text" name="slug" value="<?= $row['slug']?>"></br></br>
 

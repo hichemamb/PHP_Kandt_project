@@ -12,15 +12,22 @@
 <?php
 require_once "../includes/connection.php";
 
-$show = $pdo->prepare('SELECT `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title` FROM `page` WHERE `id`=:id');
-$show->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
-$show->execute();
+$reqSql = 'SELECT
+  `id`,`slug`,`title`,`h1`,`p`,`span-class`,`span-text`,`img-alt`,`img-src`,`nav-title` 
+FROM 
+  `page` 
+WHERE 
+  `id`=:id 
+LIMIT 1';
+$req = $pdo->prepare($reqSql);
+$req->bindValue(':id',$_GET['id'], PDO::PARAM_INT);
+$req->execute();
 
-$pages=$show;
+$pages=$req;
 
 ?>
 <?php foreach ($pages as $thepage): ?>
-<h1>Êtes vous sur de vouloir supprimer la page : <?php ?><?= $thepage['nav-title']?> ? </h1>
+<h1>Êtes vous sur de vouloir supprimer la page : <?= $thepage['nav-title']?> ? </h1>
 
 <?php endforeach; ?>
 
