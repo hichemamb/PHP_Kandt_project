@@ -85,7 +85,7 @@ function getNav(PDO $pdo): array
 {
     $sql = "SELECT 
               `slug`, 
-              `nav-title`, 
+              `nav-title` 
             FROM 
               `page`
             ;";
@@ -115,6 +115,7 @@ function getHeader($pdo, $currentPage): void
 <nav class="navbar navbar-inverse navbar-fixed-top">
 <div class="container">
 <div class="navbar-header">
+    <a class="navbar-brand" href="gestion.php">Admin</a>
     <a class="navbar-brand" href="<?=APP_URL_STRUCT?>">WTF-CMS</a>
 </div>
 <div id="navbar" class="navbar-collapse collapse">

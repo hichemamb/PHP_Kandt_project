@@ -6,7 +6,7 @@
  * Time: 14:45
  */
 try {
-    $pdo = new PDO('mysql:host=localhost;port=3307;dbname=kandtG1', 'kandtG1', 'kandtG1');
+    $pdo = new PDO('mysql:host=localhost;port=3307;dbname=kandtg01', 'root', 'juilletjuillet');
     $pdo->exec("SET NAMES UTF8");
 } catch (PDOException $exception) {
     require "databaseDied.php";
