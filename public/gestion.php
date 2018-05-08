@@ -17,6 +17,7 @@ require_once "../includes/connection.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/bootstrap/css/style.css">
     <title>Gestion</title>
 </head>
 
@@ -33,11 +34,14 @@ $pages=$req->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <h1>Liste des pages</h1>
+<a class="lien" href="index.php">Revenir à l'accueil</a>
+
 
 <table>
     <tr>
         <th>Id</th>
         <th>Title</th>
+        <th>Action</th>
     </tr>
 
     <?php foreach ($pages as $thepage): ?>

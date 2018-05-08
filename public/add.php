@@ -26,5 +26,5 @@
     <label>nav-title:</label>
     <input type="text" name="nav-title"></br></br>
 
-    <input type="submit" name="submit" value="Envoyer"></br></br>
+    <input type="submit" name="submit" value="Ajouter"></br></br>
 </form>

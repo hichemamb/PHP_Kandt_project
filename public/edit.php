@@ -23,7 +23,18 @@ $req->execute();
 $row = $req ->fetch(PDO::FETCH_ASSOC);
 
 ?>
+<!doctype html>
+<html>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/bootstrap/css/style.css">
+    <title>Gestion</title>
+</head>
+
+<body>
 
 <h1>Modification de la page </h1>
 
@@ -55,6 +66,9 @@ $row = $req ->fetch(PDO::FETCH_ASSOC);
     <label>nav-title:</label>
     <input type="text" name="nav-title" value="<?= $row['nav-title']?>"></br></br>
 
-    <input type="submit" name="submit" value="Envoyer"></br></br>
+    <input type="submit" name="submit" value="Modifier"></br></br>
 </form>
+
+</body>
+</html>
 

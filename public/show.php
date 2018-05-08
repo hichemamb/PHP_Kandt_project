@@ -16,6 +16,7 @@ require_once "../includes/connection.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../public/bootstrap/css/style.css">
     <title>Gestion</title>
 </head>
 
@@ -35,7 +36,7 @@ $req->execute();
 
 $pages=$req; ?>
 
-<h1>Liste des pages</h1>
+<h1>Information sur la page</h1>
 
 <table>
     <tr>
@@ -63,8 +64,10 @@ $pages=$req; ?>
             <td><?= $thepage['img-alt']?></td>
             <td><?= $thepage['img-src']?></td>
             <td><?= $thepage['nav-title']?></td>
-            <td><a href="remove.php?id=<?= $thepage['id']?>">Supprimer</a></td>
-            <td><a href="edit.php?id=<?= $thepage['id']?>">Modifier</a></td>
+            <td>
+                <a href="remove.php?id=<?= $thepage['id']?>">Supprimer</a></br></br>
+                <a href="edit.php?id=<?= $thepage['id']?>">Modifier</a>
+            </td>
         </tr>
     <?php endforeach; ?>
 </table>
